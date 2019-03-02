@@ -1,0 +1,10 @@
+- ARM [emulation](http://azeria-labs.com/arm-lab-vm/), and a VM
+- [build](https://jsandler18.github.io/tutorial/dev-env.html) an OS for Pi
+- Raspbian on a VM --- [QEMU](https://www.qemu.org)
+- [mount](https://hackmylinux.com/2018/02/18/how-to-mount-and-read-a-linux-partition-on-a-mac-ext2-ext3-ext4/) ext on a Mac
+- [another one about ext fs](http://unsolicitedbutoffered.blogspot.com/2017/04/tested-fuse-for-macos-ext4-storage-and.html)
+- Linux server [security](https://github.com/imthenachoman/How-To-Secure-A-Linux-Server)
+- one person's [desktop](https://hookrace.net/blog/linux-desktop-setup/)
+- [docker](https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/) for pi
+- hacking the [desktop](https://www.raspberrypi.org/blog/introducing-pixel/)
+- [atom] --- not done yet

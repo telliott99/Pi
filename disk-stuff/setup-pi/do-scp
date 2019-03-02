@@ -1,0 +1,3 @@
+#! /bin/bash
+
+sshpass -p 'raspberry' scp tmp.tar.gz pi@10.0.1.7:~

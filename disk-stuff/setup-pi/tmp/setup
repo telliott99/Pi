@@ -1,0 +1,33 @@
+#! /bin/bash
+echo "in setup"
+
+cd tmp
+#echo "in tmp"
+#ls -al key*
+
+mkdir ~/.ssh
+#ls -al ~
+
+cp key ~/.ssh/authorized_keys
+sudo chown pi:pi ~/.ssh/authorized_keys
+
+sudo cp motd /etc/motd
+
+#echo "after copy"
+#echo "ls ssh"
+#ls -al ~/.ssh
+#pwd
+#ls -al .
+
+sudo cp sshd_config.ssh_only /etc/ssh/sshd_config
+
+cd ~
+#echo "key"
+cat ~/.ssh/authorized_keys | cut -c 1-20
+sudo cat /etc/ssh/sshd_config | grep "Password" | head -n 1
+sudo cat /etc/ssh/sshd_config | grep "Pubkey"
+
+## for testing
+# rm -r ~/.ssh
+
+#echo "exit script"

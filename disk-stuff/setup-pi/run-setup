@@ -1,0 +1,11 @@
+#! /bin/bash
+
+echo "in run-setup"
+
+# silence tar -x warning about timestamp
+sleep 2
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no pi@10.0.1.7 \
+'tar -zxf tmp.tar.gz;\
+tmp/setup; rm -r tmp*'

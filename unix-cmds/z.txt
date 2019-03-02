@@ -1,0 +1,3 @@
+abc bca cab
+bca cab abc
+cab abc bca

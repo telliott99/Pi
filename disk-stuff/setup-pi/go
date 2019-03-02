@@ -1,0 +1,15 @@
+#! /bin/bash
+
+echo "in go"
+cd setup-pi
+
+cp ~/.ssh/id_rsa.pub tmp/key
+
+tar -zcf tmp.tar.gz tmp
+echo "after tar -c"
+
+./do-scp
+./run-setup
+
+rm -r tmp.tar.gz
+echo "exit go"
