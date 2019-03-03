@@ -1,79 +1,98 @@
 #! /bin/bash
 
 echo "in: do_pubkey"
+cd scripts
+pi="pi@raspberrypi.local"
 
 # copy ssh public key to the Pi
-# no need for pi@10.0.1.7:$HOME/key
-# and usual pi@10.0.1.7:~/key doesn't work!
+# no need for $HOME/key and
+# ~/key doesn't work (pi keyboard issue?)
 sshpass -p "raspberry" \
-scp ~/.ssh/id_rsa.pub pi@10.0.1.7:key
+scp $HOME/.ssh/id_rsa.pub $pi:key
 
 # copy to final destination
 sshpass -p "raspberry" \
 ssh -o StrictHostKeyChecking=no \
-pi@10.0.1.7 'sudo cp key $HOME/.ssh/authorized_keys; \
+$pi 'pwd;\
+echo "0";\
+sudo mkdir $HOME/.ssh;\  # discard error if .ssh exists
+echo "1";\
+sudo cp $HOME/key $HOME/.ssh/authorized_keys;\   # first time setup
+echo "2";\
 sudo chown $USER:$USER $HOME/.ssh/authorized_keys;\
+echo "3";\
 sudo chmod 755 $HOME/.ssh/authorized_keys;\
 echo "authorized_keys on Pi";\
 cat $HOME/.ssh/authorized_keys | cut -c 1-40'
 
+echo "here";
 #--------------------------------------------------
 
 # copy ssh sshd_config to the Pi
 sshpass -p "raspberry" \
-scp ~/Desktop/sshd_config.both pi@10.0.1.7:config;
+scp sshd_config.both $pi:config;
+
+# problem here:
+# we only want to copy sshd_config sshd_config.orig
+# *if* it's the right one!
 
 # copy to final dest
 sshpass -p "raspberry" \
 ssh -o StrictHostKeyChecking=no \
-pi@10.0.1.7 'sudo chown $USER:$USER $HOME/config;\
+$pi 'sudo chown $USER:$USER $HOME/config;\
 sudo chmod 755 $HOME/config;\
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig;
 sudo cp $HOME/config /etc/ssh/sshd_config;\
 echo "diff:  new <  > orig";\
 sudo service ssh restart;\
-cd /etc/ssh; sudo diff sshd_config sshd_config.orig'
+cd /etc/ssh; sudo diff sshd_config sshd_config.orig;\
+cd;  sudo rm key config;'
 
 #--------------------------------------------------
 
-# now try it
-ssh pi@10.0.1.7 'exit;'
+# now try Pubkey
+ssh $pi 'exit;'
 retval=$?
 if [ $retval -ne 0 ]; then
   echo "Pubkey login failed, keeping PW"
 else 
   echo "Pubkey login is working, disabling PW login"
   sshpass -p "raspberry" \
-  scp ~/Desktop/sshd_config.pub_only pi@10.0.1.7:config
+  scp sshd_config.pub_only $pi:config
   
   sshpass -p "raspberry" \
   ssh -o StrictHostKeyChecking=no \
-  pi@10.0.1.7 'sudo chown $USER:$USER $HOME/config;\
+  $pi 'sudo chown $USER:$USER $HOME/config;\
   chmod 755 $HOME/config;\
   sudo cp $HOME/config /etc/ssh/sshd_config;\
   sudo service ssh restart'
 fi
 
-ssh pi@10.0.1.7 'exit;'
+#--------------------------------------------------
+
+# if Pubkey works, remove Password Auth
+
+ssh $pi 'exit;'
 retval=$?
 if [ $retval -eq 0 ]; then
-  echo "PW login is off"
+  echo "PW login is disabled"
 fi
 
 if [ $retval -ne 0 ]; then
-  echo "Pubkey login failed, attempting to restore PW"
+  echo "Pubkey login failed"
+  echo "Attempting to revert to Password Auth"
   
   sshpass -p "raspberry" \
   ssh -o StrictHostKeyChecking=no \
-  pi@10.0.1.7 'cd /etc/ssh;\
-  sudo cp sshd_config.orig sshd_config
+  $pi 'cd /etc/ssh;\
+  sudo cp /etc/ssh/sshd_config.orig sshd_config
   sudo service ssh restart'
   
   sshpass -p "raspberry" \
   ssh -o StrictHostKeyChecking=no \
-  pi@10.0.1.7 'exit'
+  $pi 'exit'
   retval=$?
   if [ $retval -ne 0 ]; then
-    echo "think it worked"
+    echo "I think it worked"
   fi
 fi

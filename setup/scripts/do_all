@@ -1,0 +1,39 @@
+#! /bin/bash
+
+dir=scripts
+
+echo "in: $0"
+
+# remove key for raspberry
+$dir/kill_previous
+
+# to consume key/host warning on first ssh
+$dir/first_ssh
+
+pi="pi@raspberrypi.local"
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'exit' 2>/dev/null;
+
+$dir/copy_key
+echo ""
+$dir/copy_config
+echo ""
+$dir/try_pub
+retval=$?
+echo ""
+
+if [ $retval -ne 0 ]; then
+  echo "Pubkey login failed"
+  echo "Attempting to revert to Password Auth"
+  $dir/revert
+  retval=$?
+  if [ $retval -ne 0 ]; then
+    echo "I think it worked"
+  fi
+  exit 1
+fi
+
+$dir/do_motd
+$dir/cleanup
+

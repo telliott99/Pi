@@ -1,0 +1,29 @@
+#! /bin/bash
+
+echo "in: $0"
+
+# copy ssh public key to the Pi
+# no need for $HOME/key and ..
+# ~/key doesn't work (pi keyboard issue?)
+
+pi="pi@raspberrypi.local"
+sshpass -p "raspberry" \
+scp $HOME/.ssh/id_rsa.pub $pi:key
+
+
+# move key to final destination
+# mkdir gives error if directory exists
+# no blank lines or comments allowed
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi '\
+if [ -d $HOME/.ssh ]; then echo ".ssh exists";\
+else sudo mkdir $HOME/.ssh 2>/dev/null;\
+echo "making .ssh directory"; fi;\
+sudo cp $HOME/key $HOME/.ssh/authorized_keys;\
+sudo chown -R $USER:$USER $HOME/.ssh/authorized_keys;\
+sudo chmod 755 $HOME/.ssh/authorized_keys;\
+echo "first line of authorized_keys on Pi:";\
+cat $HOME/.ssh/authorized_keys | cut -c 1-40;\
+echo "key owner:";\
+cut -f 3 -d " " $HOME/.ssh/authorized_keys;'

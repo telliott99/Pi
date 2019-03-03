@@ -33,6 +33,31 @@ If you haven't worked with Linux much, you should look at NOOBS.  It allows you 
 
 The micro SD card I bought ([here](https://www.amazon.com/gp/product/B01H5ZNOYG/ref=ppx_yo_dt_b_asin_title_o02__o00_s00?ie=UTF8&psc=1)) came with NOOBS installed, and it was pre-expanded so that it came to the Desktop about 10 seconds after I turned it on.  That's a great place to start. 
 
+<hr>
+
+#### Note
+
+- I find it convenient to monitor the Pi by ssh (secure shell)  
+
+I'm using a Mac as the client computer, from which I ssh *into* the Pi as a server.  Occasionally, I use a remote Desktop over the WiFi network.
+
+- **You can certainly use a PC as the client instead**, but I don't use or even have Windows, so YMMV.
+
+Since we have two computers here, it helps to have different prompts on the command line.  
+
+Lines starting
+
+- ``$ `` or
+- ``pi@raspberrypi:~ $`` 
+
+are on the PI.
+
+- ``> ``
+
+are on the Mac.
+
+#### Download NOOBS
+
 If you'd rather roll your own (or you accidentally wrote over your NOOBS like I did)
 
 - [reformat](files/22.md) a USB drive or SD card (w/ reader)
@@ -66,6 +91,8 @@ Copying an image is covered below.  Here we have booted the Pi with an SD card o
 - [remote desktop](files/2.md) by ``tightvncserver``
 - [scp](files/6.md) (secure copy) and copy-paste
 
+<hr>
+
 #### Public key authentication
 
 Initial ssh gives login via password.  We want to use a Public/Private(Secret) key pair:
@@ -74,14 +101,7 @@ Initial ssh gives login via password.  We want to use a Public/Private(Secret) k
 - [update](files/17.md) ssh host
 - use [hostname](named_files/hostname.md) instead of ip address
 
-#### Notes
-
-- I am monitoring the Pi by ssh and remote Desktop over the WiFi network.  I find it convenient to do some work on my Mac.  A second computer isn't necessary, and **you can certainly use a PC instead**, but I don't use or even have Windows, so YMMV.
-
-We're using two computers here.  Lines starting
-
-- ``> `` are on the Mac
-- ``$ `` or ``pi@raspberrypi:~ $`` are on the PI
+#### Note
 
 - I've assumed you know something about the command line.  You can follow along by cut-and-paste, but I haven't explained the most basic commands like ``cd`` and ``ls`` and ``cp`` and so forth.
 
@@ -97,7 +117,7 @@ A download and install of Stretch + Desktop from a .img file:
 - [quickstart](disk-stuff/stretch-lite-quick.md)
 - [setting up](disk-stuff/headless1.md) headless Lite
 - [variation](disk-stuff/headless2.md), modify the disk image first
-- cool [script](disk-stuff/script-setup.md) for auto Pubkey Auth setup
+- cool [script](setup/script-setup2.md) for auto Pubkey Auth setup
 - [modifying](files/17.md) ``known_hosts`` on the Mac
 - [set locale](named_files/locale.md) from the command line
 - [keyboard](named_files/keyboard.md) issues [more to do]

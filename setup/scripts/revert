@@ -1,0 +1,21 @@
+#! /bin/bash
+
+echo "in: $0"
+pi="pi@raspberrypi.local"
+
+echo "Pubkey login failed"
+echo "Attempting to revert to Password Auth"
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'cd /etc/ssh;\
+sudo cp $HOME/sshd_config.pw sshd_config
+sudo service ssh restart'
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'exit'
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "I think it worked"
+fi

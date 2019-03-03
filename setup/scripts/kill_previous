@@ -1,0 +1,16 @@
+#! /usr/bin/python
+
+import os
+p=os.environ['HOME'] + '/.ssh/known_hosts'
+
+with open(p, 'r') as fh:
+  data = fh.read()
+
+L = data.strip().split('\n')
+L = [e for e in L if not e.startswith('raspberry')]
+s = '\n'.join(L)
+
+with open(p, 'w') as fh:
+  fh.write(s)
+
+

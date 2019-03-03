@@ -1,0 +1,35 @@
+#! /bin/bash
+
+echo "in: $0"
+pi="pi@raspberrypi.local"
+
+# copy ssh sshd_config to the Pi
+sshpass -p "raspberry" \
+scp scripts/files/both.txt $pi:sshd_config.both;
+
+# problem here:
+# we only want to copy sshd_config sshd_config.orig
+# *if* it's the right one!
+
+# solution:
+# copy all 3 over and and overwrite the one in /etc/ssh
+
+sshpass -p "raspberry" \
+scp scripts/files/pw.txt $pi:sshd_config.pw;
+
+sshpass -p "raspberry" \
+scp scripts/files/pub.txt $pi:sshd_config.pub;
+
+#-----------------------------------------
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'sudo chown $USER:$USER $HOME/sshd_config*;\
+sudo chmod 755 $HOME/sshd_config*;\
+sudo cp $HOME/sshd_config.both /etc/ssh/sshd_config;\
+echo "configuration in /etc/ssh/sshd_config:";\
+grep -m 1 "Pubkey" /etc/ssh/sshd_config;\
+grep -m 1 "Password" /etc/ssh/sshd_config;\
+sudo service ssh restart;'
+
+

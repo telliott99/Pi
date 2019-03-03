@@ -1,0 +1,18 @@
+#! /bin/bash
+
+echo "in: $0"
+pi="pi@raspberrypi.local"
+
+# first try Pubkey
+ssh $pi 'exit;'
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Pubkey login failed, leaving PW login"
+  exit 1
+else 
+  echo "Pubkey login is working, will disable PW login"
+  sshpass -p "raspberry" \
+  ssh -o StrictHostKeyChecking=no \
+  $pi 'sudo cp $HOME/sshd_config.pub /etc/ssh/sshd_config;\
+  sudo service ssh restart'
+fi

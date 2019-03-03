@@ -1,0 +1,9 @@
+#! /bin/bash
+
+echo "in: $0"
+pi="pi@raspberrypi.local"
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'echo "Peace and love." > motd;\
+sudo cp motd /etc/motd;'

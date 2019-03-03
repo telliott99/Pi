@@ -1,0 +1,9 @@
+#! /bin/bash
+
+echo "in: $0"
+
+pi="pi@raspberrypi.local"
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'exit' 2>/dev/null;
