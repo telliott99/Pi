@@ -98,9 +98,10 @@ A download and install of Stretch + Desktop from a .img file:
 - [setting up](disk-stuff/headless1.md) headless Lite
 - [variation](disk-stuff/headless2.md), modify the disk image first
 - cool [script](disk-stuff/script-setup.md) for auto Pubkey Auth setup
-- [modifying](files/17.md) ``known_hosts``
+- [modifying](files/17.md) ``known_hosts`` on the Mac
 - [set locale](named_files/locale.md) from the command line
-- [keyboard](named_files/keyboard.md) issues [unsolved]
+- [keyboard](named_files/keyboard.md) issues [more to do]
+- save the modified OS (see backups, below)
 
 #### Unix stuff
 
@@ -131,7 +132,14 @@ Pi stands for Python, [here](named_files/python.md) are a few cool examples of m
 
 Several days work on disk images and backups, copying, etc. are chronicled [here](disk-stuff/README.md).  
 
-One can save a modified system as a disk image, and re-install it on a USB drive or SD card and have it work.
+One can save a modified system as a disk image, and re-install it on a USB drive or SD card and have it work.m
+At this point, I copied over a Lite image with WiFi and SSH on, turned on PubKey Auth, went through the ``raspi-config`` dance, installed apache2 and nginx and tested them.  I want to save it back to the Mac as a .img file.
+
+I need to know the right size.  ``df -h`` says we're using only 1.1 GB for /dev/root.
+
+Try 1.5 GB.
+
+
 
 #### Text, typesetting and more
 

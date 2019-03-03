@@ -1,8 +1,12 @@
 We have the Pi booted with Stretch-Lite, 
 
-The OS was previously modified to add ``ssh`` and ``wpa_supplicant.conf`` to ``/boot``, so we have WiFi working and can do ssh by password.  See [here](backup4.md).
+The OS was previously modified to add ``ssh`` and ``wpa_supplicant.conf`` to ``/boot``, so we have WiFi working and can do ssh by password.  See [here](../disk-stuff/backup4.md).
 
 Now, we want to use ``scp`` to copy over a script that can finish the setup, along with any needed files.
+
+The initial version of this script is described below.
+
+A later version with everything in a single file is [here](script-setup2.md)
 
 The project is in this directory as ``archive.tar.gz``, constructed by
 

@@ -1,0 +1,79 @@
+#! /bin/bash
+
+echo "in: do_pubkey"
+
+# copy ssh public key to the Pi
+# no need for pi@10.0.1.7:$HOME/key
+# and usual pi@10.0.1.7:~/key doesn't work!
+sshpass -p "raspberry" \
+scp ~/.ssh/id_rsa.pub pi@10.0.1.7:key
+
+# copy to final destination
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+pi@10.0.1.7 'sudo cp key $HOME/.ssh/authorized_keys; \
+sudo chown $USER:$USER $HOME/.ssh/authorized_keys;\
+sudo chmod 755 $HOME/.ssh/authorized_keys;\
+echo "authorized_keys on Pi";\
+cat $HOME/.ssh/authorized_keys | cut -c 1-40'
+
+#--------------------------------------------------
+
+# copy ssh sshd_config to the Pi
+sshpass -p "raspberry" \
+scp ~/Desktop/sshd_config.both pi@10.0.1.7:config;
+
+# copy to final dest
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+pi@10.0.1.7 'sudo chown $USER:$USER $HOME/config;\
+sudo chmod 755 $HOME/config;\
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.orig;
+sudo cp $HOME/config /etc/ssh/sshd_config;\
+echo "diff:  new <  > orig";\
+sudo service ssh restart;\
+cd /etc/ssh; sudo diff sshd_config sshd_config.orig'
+
+#--------------------------------------------------
+
+# now try it
+ssh pi@10.0.1.7 'exit;'
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Pubkey login failed, keeping PW"
+else 
+  echo "Pubkey login is working, disabling PW login"
+  sshpass -p "raspberry" \
+  scp ~/Desktop/sshd_config.pub_only pi@10.0.1.7:config
+  
+  sshpass -p "raspberry" \
+  ssh -o StrictHostKeyChecking=no \
+  pi@10.0.1.7 'sudo chown $USER:$USER $HOME/config;\
+  chmod 755 $HOME/config;\
+  sudo cp $HOME/config /etc/ssh/sshd_config;\
+  sudo service ssh restart'
+fi
+
+ssh pi@10.0.1.7 'exit;'
+retval=$?
+if [ $retval -eq 0 ]; then
+  echo "PW login is off"
+fi
+
+if [ $retval -ne 0 ]; then
+  echo "Pubkey login failed, attempting to restore PW"
+  
+  sshpass -p "raspberry" \
+  ssh -o StrictHostKeyChecking=no \
+  pi@10.0.1.7 'cd /etc/ssh;\
+  sudo cp sshd_config.orig sshd_config
+  sudo service ssh restart'
+  
+  sshpass -p "raspberry" \
+  ssh -o StrictHostKeyChecking=no \
+  pi@10.0.1.7 'exit'
+  retval=$?
+  if [ $retval -ne 0 ]; then
+    echo "think it worked"
+  fi
+fi

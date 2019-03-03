@@ -16,6 +16,7 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 - head, tail
 - [hexdump](hexdump.md) --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/hexdump.rst)
 - ifconfig --- see below
+- kill
 - [ln](ln.md)
 - [man](man.md)
 - [nmap]

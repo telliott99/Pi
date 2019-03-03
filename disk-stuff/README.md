@@ -23,9 +23,8 @@ I saw a suggestion to run an arbitrary script on Pi boot by changing ``cmdline.t
 
 So I decided to write a script that can run from the Mac with the micro SD card from above booting the Pi and do the rest of the setup over ssh.
 
-- [detailed description](script-setup.md) of configuration script
-
-I did this in stages, not all at once, like any programming project.
+- [detailed description](../setup/script-setup.md) of configuration script
+- [upgraded version](../setup/script-setup2.md)
 
 #### Notes
 
