@@ -1,0 +1,54 @@
+#! /bin/bash
+
+pi="pi@raspberrypi.local"
+
+#ssh $pi 'sudo apt-get update; \
+#sudo apt-get -y install curl;\
+#sudo apt-get -y install apache2; \
+#sudo apt-get install -y libapache2-mod-python'
+
+scp scripts2/tmp/test $pi:/home/pi
+ssh $pi 'sudo cp $HOME/test /usr/lib/cgi-bin'
+
+# /etc/apache2/conf-available/serve-cgi-bin.conf
+# has ScriptAlias already set up to /usr/lib/cgi-bin/
+
+echo 'running a2enmod cgi'
+ssh $pi 'sudo a2enmod cgi'
+
+echo 'test apache2:'
+ssh $pi 'curl localhost/cgi-bin/test'
+
+echo 'disabling off apache2 server'
+ssh $pi 'sudo update-rc.d apache2 disable' 
+
+#-----------------------------------------
+
+ssh $pi 'apt-get install -y nginx; \
+sudo update-rc.d nginx disable;'
+
+exit
+
+todo:
+
+$ sudo mkdir -p /var/www/test.com/html
+$ sudo chmod -R 755 /var/www
+
+> scp index.html pi@10.0.1.7:~
+$ sudo cp ~/index.html /var/www/test.com/html/
+
+> scp test.com.txt pi@10.0.1.7:~/test.com
+$ sudo cp ~/test.com /etc/nginx/sites-available/test.com
+
+$ sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
+$ sudo rm /etc/nginx/sites-enabled/default
+
+sudo nano /etc/nginx/nginx.conf
+# uncomment:
+server_names_hash_bucket_size 64;
+
+sudo nano /etc/hosts
+# add:
+127.0.0.1       test.com
+
+$ sudo service nginx restart

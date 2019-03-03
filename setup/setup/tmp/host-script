@@ -1,0 +1,22 @@
+#! /bin/bash
+
+if [ -d $HOME/.ssh ]; then echo ".ssh exists"
+else sudo mkdir $HOME/.ssh 2>/dev/null
+echo "making .ssh directory"; fi
+
+sudo cp $HOME/tmp/key $HOME/.ssh/authorized_keys
+sudo chown -R $USER:$USER $HOME/.ssh/authorized_keys
+sudo chmod 755 $HOME/.ssh/authorized_keys;
+
+echo "first line of authorized_keys on Pi:"
+cat $HOME/.ssh/authorized_keys | cut -c 1-40
+echo "key owner:"
+cut -f 3 -d " " $HOME/.ssh/authorized_keys
+
+#-----------
+
+sudo cp $HOME/tmp/both.txt /etc/ssh/sshd_config
+sudo service ssh restart
+sudo rm -r $HOME/tmp
+
+

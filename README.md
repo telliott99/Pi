@@ -105,6 +105,8 @@ Initial ssh gives login via password.  We want to use a Public/Private(Secret) k
 
 - I've assumed you know something about the command line.  You can follow along by cut-and-paste, but I haven't explained the most basic commands like ``cd`` and ``ls`` and ``cp`` and so forth.
 
+Suggestions for learning more about Unix and Linux are below.
+
 #### Stretch install 
 
 A download and install of Stretch + Desktop from a .img file:
@@ -117,11 +119,42 @@ A download and install of Stretch + Desktop from a .img file:
 - [quickstart](disk-stuff/stretch-lite-quick.md)
 - [setting up](disk-stuff/headless1.md) headless Lite
 - [variation](disk-stuff/headless2.md), modify the disk image first
-- cool [script](setup/script-setup2.md) for auto Pubkey Auth setup
-- [modifying](files/17.md) ``known_hosts`` on the Mac
+
+#### Scripting setup
+
+There are a number of configuration details that must be accomplished *after* first boot (or at least, I don't know how to do them before).
+
+- [scripts](setup/scripting.md) for auto Pubkey Auth setup
+- [correcting issues](files/17.md) with ``known_hosts`` on the Mac
+
+Short version:  I wrote one script to write the OS image to a USB drive, and one to configgure the Pi as far as Pubkey Auth ssh.  [here]()
+
+#### Locale
+
+In addition to the above:
+
 - [set locale](named_files/locale.md) from the command line
-- [keyboard](named_files/keyboard.md) issues [more to do]
-- save the modified OS (see backups, below)
+- [correcting](setup-scripting/setup.md) some [issues](named_files/keyboard.md) with known hosts in a [Python script](setup-scripting/setup/kill_previous).
+
+To save the modified OS see **Saving backups**, below.
+
+#### Saving backups
+
+- [quickref](disk-stuff/quickref.md)
+- [write](disk-stuff/backup4.md) image to SD card (WiFi and ssh active)
+
+Several days work on disk images and backups, copying, etc. are chronicled [here](disk-stuff/README.md).  
+
+One can save a modified system as a disk image, and re-install it on a USB drive or SD card and have it work.m
+At this point, I copied over a Lite image with WiFi and SSH on, turned on PubKey Auth, went through the ``raspi-config`` dance, installed apache2 and nginx and tested them.  I want to save it back to the Mac as a .img file.
+
+I need to know the right size.  ``df -h`` says we're using only 1.1 GB for /dev/root.  1.5 GB works fine.
+
+#### Web servers and frameworks
+
+- [apache, nginx, flask](servers/README.md)
+
+<hr>
 
 #### Unix stuff
 
@@ -141,34 +174,7 @@ Pi stands for Python, [here](named_files/python.md) are a few cool examples of m
 
 [Here](https://docs.python.org/3/tutorial/) is the official Python tutorial.  And [here](https://github.com/telliott99/PyBioinformatics) is a book that I wrote about using Python for Bioinformatics.
 
-#### Web servers and frameworks
-
-- [apache, nginx, flask](servers/README.md)
-
-#### Saving backups
-
-- [quickref](disk-stuff/quickref.md)
-- [write](disk-stuff/backup4.md) image to SD card (WiFi and ssh active)
-
-Several days work on disk images and backups, copying, etc. are chronicled [here](disk-stuff/README.md).  
-
-One can save a modified system as a disk image, and re-install it on a USB drive or SD card and have it work.m
-At this point, I copied over a Lite image with WiFi and SSH on, turned on PubKey Auth, went through the ``raspi-config`` dance, installed apache2 and nginx and tested them.  I want to save it back to the Mac as a .img file.
-
-I need to know the right size.  ``df -h`` says we're using only 1.1 GB for /dev/root.
-
-Try 1.5 GB.
-
-
-
-#### Text, typesetting and more
-
-- LaTeX --- not done yet
-- Sphinx --- not done yet
-
-#### Current stuff
-
-- Growing my [Linux Fu](linux/main.md)
+<hr>
 
 #### A bit more about SSH
 
@@ -182,6 +188,17 @@ Try 1.5 GB.
 - my notes on [password complexity](named_files/pw_complexity.md)
 - [generating](named_files/pw_util.md) passwords from the command line
 
+<hr>
+
+#### Text, typesetting and more
+
+- LaTeX --- not done yet
+- Sphinx --- not done yet
+
+#### Current stuff
+
+- Growing my [Linux Fu](linux/main.md)
+
 #### Ideas for future projects
 
 - [433 MHz receiver](https://www.princetronics.com/how-to-read-433-mhz-codes-w-raspberry-pi-433-mhz-receiver/) on Pi, other IOT stuff
@@ -190,8 +207,6 @@ Try 1.5 GB.
 - [weather station](https://projects.raspberrypi.org/en/projects/build-your-own-weather-station)
 - [touchscreen](https://www.pishop.us/product/official-raspberry-pi-7-touch-screen-display-with-10-finger-capacitive-touch/?src=raspberrypi)
 - [hardcore](named_files/hardcore.md) software
-
-<hr>
 
 I am keeping an eye on [Atomic Pi](https://www.kickstarter.com/projects/323002773/atomic-pi-a-high-power-alternative-to-rpi/updates) --- [more](http://www.digital-loggers.com/api.html).  Order [here](https://dlidirect.com/products/atomic-pi).
 

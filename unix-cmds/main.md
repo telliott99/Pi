@@ -24,6 +24,7 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 - [ps]
 - [pipes & redirection](pipe.md):  ``|``, ``>``, ``<``, ``>>``
 - [sed](sed.md)
+- [sort]
 - [stat] ``-f %z <filename>``:  file size (bytes)
 - [sudo](sudo.md)
 - [tar and zip] (tar-zip.md)

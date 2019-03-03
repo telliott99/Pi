@@ -6,7 +6,7 @@
 
 - [apache server](apache.md) start and stop
 - apache2 [runs](apache-python.md) a Python script from ``cgi-bin``
-- [starting and stoppying](services.md) apache2 and other services
+- [starting and stopping](services.md) apache2 and other services
 
 #### nginx
 

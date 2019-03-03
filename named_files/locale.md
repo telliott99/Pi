@@ -1,3 +1,9 @@
+TL;DR
+
+- do ``sudo raspi-config``
+
+The essential command to edit a checkmark in a list is ``SPACE``.  Also ``TAB`` out to go from a list to Accept/Decline.
+
 #### Setting locale
 
 It's [easy enough](../files/1.md) when the Desktop is there.
@@ -41,3 +47,4 @@ Also changed:
 - Keyboard (Apple), Layout (Other > US, Language > __)
 - WiFi Country (no need, it's already set)
 
+#### Where are these stored?

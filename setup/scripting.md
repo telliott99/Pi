@@ -6,6 +6,12 @@ TL;DR
 - Power up
 - run:  ``scripts/do_all``
 
+At the moment, I still need to do ``sudo raspi-config`` and configure locale and keyboard by hand.  After that:
+
+- run: ``scripts/get-software``
+
+to install apache and nginx and configure them.
+
 #### Single file scripts for setup
 
 We want to setup the Pi for ssh using a script run on the Mac.  The Pi has been booted with Stretch Lite (WiFi+ and Password Auth for SSH+).
@@ -24,11 +30,28 @@ It does work but I ran into trouble with time-stamps, possibly because the Pi's 
 
 #### Revised version
 
-The script is broken into parts run by doing:  [``scripts/do_all``](scripts/do_all).  
+The script is broken down into parts that are run by doing:  [``scripts/do_all``](scripts/do_all).  
+
+#### Third version
+
+Take advantage of ``-r`` flag to ``scp`` to copy over ``tmp`` directory containing data files plus a ``server-script``.
+
+Upper level has 2 client-side scripts.  
+
+Copy the ``scripts`` directory to the Desktop and from the Desktop do
+
+- ``setup/kill-previous``
+- ``setup/client_script``
+
+#### Scripting install of apache2 and nginx
+
+Copy the ``scripts2`` directory to the Desktop and from the Desktop do ``get-software``.
+
+[Still in progress]
+
+#### To do
 
 Other scripted setup yet to do:
 
 - keyboard and locale, language, etc.
 - change default password
-
-

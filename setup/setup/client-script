@@ -1,0 +1,35 @@
+#! /bin/bash
+
+cp $HOME/.ssh/id_rsa.pub $HOME/Desktop/setup/tmp/key
+
+pi="pi@raspberrypi.local"
+sshpass -p "raspberry" \
+scp -r $HOME/Desktop/setup/tmp $pi:/home/pi
+
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'tmp/host-script' 2>/dev/null
+
+#--------------------------------
+
+# first ssh to consume warning
+sshpass -p "raspberry" \
+ssh -o StrictHostKeyChecking=no \
+$pi 'exit' 2>/dev/null;
+
+# try pub
+ssh $pi 'exit;'
+retval=$?
+if [ $retval -ne 0 ]; then
+  echo "Pubkey login failed, leaving PW login"
+  exit 1
+else 
+  echo "Pubkey login is working, will disable PW login"
+  sshpass -p "raspberry" \
+  ssh -o StrictHostKeyChecking=no \
+  $pi 'sudo cp $HOME/tmp/pub.txt /etc/ssh/sshd_config;\
+  sudo service ssh restart'
+fi
+
+rm -r setup/tmp/key
+
