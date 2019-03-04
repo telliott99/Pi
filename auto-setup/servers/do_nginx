@@ -1,14 +1,9 @@
 #! /bin/bash
 
-# servers/do_apache
-
-#-----------------------------------------
-
 pi="pi@raspberrypi.local"
 
 ssh $pi 'sudo apt-get install -y nginx; \
-sudo update-rc.d nginx disable; \
-sudo service apache2 stop; '
+sudo update-rc.d nginx disable; '
 
 ssh $pi 'sudo mkdir -p /var/www/test.com/html; \
 sudo chmod -R 755 /var/www;'
@@ -18,20 +13,23 @@ ssh $pi 'sudo chown -R $USER:$USER $HOME/tmp'
 
 ssh $pi 'sudo cp ~/tmp/index.html /var/www/test.com/html/ ;'
 
-d1=/etc/nginx/sites-available
-d2=/etc/nginx/sites-enabled
+#d1=/etc/nginx/sites-available
+#d2=/etc/nginx/sites-enabled
 
-ssh $pi 'sudo cp ~/tmp/test.com.txt $d1/test.com;\
+ssh $pi 'd1=/etc/nginx/sites-available; \
+d2=/etc/nginx/sites-enabled; \
+sudo cp ~/tmp/test.com.txt $d1/test.com;\
 sudo cp ~/tmp/nginx.conf /etc/nginx/nginx.conf;
 sudo cp ~/tmp/hosts /etc/hosts;
 sudo service nginx stop'
 
 ssh $pi 'echo "making symbolic link"; \
-sudo ln -s $d1/test.com $d2/ 2>/dev/null; \
-sudo rm $d2/default 2>/dev/null; \
+sudo ln -s $d1/test.com $d2 ; \
+sudo rm $d2/default ; \
 rm -r ~/tmp; '
 
-ssh $pi 'sudo service nginx restart;'
+ssh $pi 'sudo /etc/init.d/nginx restart'
 ssh $pi 'echo "testing:"; curl -s test.com;'
 
-
+ssh $pi 'sudo /etc/init.d/nginx stop;'
+ssh $pi 'sudo update-rc.d nginx disable; '

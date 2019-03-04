@@ -1,3 +1,100 @@
+#### grep
+
+#### basic
+
+``grep < pattern > < file >``
+
+but also
+
+``< cmd > | grep < pattern >``
+
+e.g.
+
+``history | grep "erase"``
+
+Simple regular expression chars:  ``^`` and ``$``
+
+```
+> cat x.txt
+abc
+bca
+cab
+> grep "^a" x.txt
+abc
+> grep "a" x.txt
+abc
+bca
+cab
+> grep "b$" x.txt
+cab
+```
+
+#### inverted
+
+- ``-v`` invert match, non-matching lines only
+
+```
+> grep -v "^a" x.txt
+bca
+cab
+```
+
+#### more flags
+
+- ``-n`` --- line number of the match
+- ``-r`` --- every file in a directory
+
+Example:
+
+```
+> grep -nr "abc" .
+...
+../x.txt:1:abc
+...
+./grep.md:11:abc
+./grep.md:15:abc
+./grep.md:17:abc
+./grep.md:32:> grep -nr "abc" .
+./grep.md:34:./grep.md:abc
+```
+
+- ``-i`` --- ignore case
+- ``-c`` --- print a count of number of matching lines
+
+So
+
+```
+> grep -ci "A" x.txt
+3
+```
+
+#### find + grep
+
+[to do]
+
+#### context
+
+- ``-A`` print A lines of context after each match
+- ``-B`` print B lines before each match
+- ``-C`` print C lines before and after each match
+
+#### regex
+
+The patterns that grep searches for are called regular expressions, or regex for short.  regex is a language defining descriptions of search patterns that are not necessarily exact matches.
+
+Some simple regex symbols and patterns are:
+
+- ``*`` wildcard
+- ``\d`` matches a digit [0-9]
+- ``\D`` matches a non-digit
+- ``\s`` matches whitespace
+- ``^`` match only at the beginning of the string
+- ``$`` match only at the end of the string
+- ``[abc]`` match any of a,b,c
+- ``[a-d]`` match any of a,b,c,d
+
+#### more
+
 #### Using grep
 
 You ran a complicated command and you can't remember it:

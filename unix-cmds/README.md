@@ -9,12 +9,20 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 [MyUnix](https://github.com/telliott99/MyUnix)
 
 - [alias](alias.md)
-- control characters:  ``CTL-Z``,``CTL-C``,``CTL-D``
+- [arp](arp.md)
+- [awk](awk.md)
+- [bgrep](bgrep.md)
+- [control characters](ctl.md):  ``CTL-Z``,``CTL-C``,``CTL-D``
+- [cut](cut.md)
 - curl --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/curl.rst)
-- EOF trick
+- [cut](cut.md)
+- [dd](dd.md)
+- [diskutil](diskutil.md)
+- [EOF](eof.md) trick
 - find --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst)
 - [grep](grep.md) --- [more](https://github.com/telliott99/MyUnix/blob/master/unix/grep.rst)
 - head, tail
+- [hdiutil](hdiutil.md)
 - [hexdump](hexdump.md) --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/hexdump.rst)
 - ifconfig --- see below
 - kill
@@ -24,13 +32,16 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 - [parted](../linux/parted.md)
 - [ps]
 - [pipes & redirection](pipe.md):  ``|``, ``>``, ``<``, ``>>``
+- [ps](ps.md)
+- [pv](pv.md)
 - [sed](sed.md)
 - [sort]
 - [stat] ``-f %z <filename>``:  file size (bytes)
 - [sudo](sudo.md)
 - [tar and zip] (tar-zip.md)
-- [tr](tr.md) --- translate
 - [touch](touch.md)
+- [tr](tr.md) --- translate
+- [truncate](truncate.md)
 - wc
 - whiptail
 - xargs --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/xargs.rst)

@@ -1,0 +1,27 @@
+#! /bin/bash
+
+fn=$1
+echo $fn
+if [[ fn == "" ]]; then 
+  echo "please input one of:  wifi, conf, pub, all";
+  exit
+fi
+
+dir=$HOME/Downloads-saved/Lite
+
+echo "Run diskutil first"
+echo "Make sure disk2 is the correct target!"
+echo "Proceed: [y/n]"
+
+read reply
+if [[ $reply != "y" ]]; then 
+  echo "goodbye"
+  exit;
+fi
+echo "proceeding..."
+diskutil eraseDisk MS-DOS SD MBR /dev/disk2
+diskutil unmountDisk /dev/disk2
+
+echo "starting copy..."
+sudo dd bs=1m if=$dir/lite-$fn.img of=/dev/rdisk2 conv=sync
+diskutil eject /dev/disk2

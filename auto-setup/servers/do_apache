@@ -20,7 +20,8 @@ ssh $pi 'sudo a2enmod cgi; \
 sudo systemctl restart apache2'
 
 echo 'test apache2:'
-ssh $pi 'curl localhost/cgi-bin/test'
+ssh $pi 'curl -s localhost/cgi-bin/test'
 
 echo 'disabling apache2 server'
 ssh $pi 'sudo update-rc.d apache2 disable' 
+ssh $pi 'sudo /etc/init.d/apache2 stop'

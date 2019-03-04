@@ -1,0 +1,24 @@
+#! /bin/bash
+
+dir=$HOME
+
+echo "Run diskutil first"
+echo "Make sure disk2 is the correct target!"
+echo "Proceed: [y/n]"
+
+read reply
+if [[ $reply != "y" ]]; then 
+  echo "goodbye"
+  exit;
+fi
+echo "proceeding..."
+diskutil unmountDisk /dev/disk2
+
+echo "starting copy..."
+if [[ -e $dir/Desktop/backup.img ]]; then 
+  echo "cannot overwrite backup.img file"
+  exit;
+fi
+
+sudo dd bs=1m count=1500 if=/dev/rdisk2 of=$dir/Desktop/backup.img conv=sync
+diskutil eject /dev/disk2
