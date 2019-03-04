@@ -9,8 +9,9 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 [MyUnix](https://github.com/telliott99/MyUnix)
 
 - [alias](alias.md)
-- control characters:  CTL-Z quit, CTL-C quit spi
+- control characters:  ``CTL-Z``,``CTL-C``,``CTL-D``
 - curl --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/curl.rst)
+- EOF trick
 - find --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst)
 - [grep](grep.md) --- [more](https://github.com/telliott99/MyUnix/blob/master/unix/grep.rst)
 - head, tail
@@ -31,6 +32,7 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 - [tr](tr.md) --- translate
 - [touch](touch.md)
 - wc
+- whiptail
 - xargs --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/xargs.rst)
 
 #### Selected additional Unix commands

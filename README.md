@@ -100,10 +100,12 @@ Initial ssh gives login via password.  We want to use a Public/Private(Secret) k
 - [Pubkey Authorization](files/3.md) for ssh
 - [update](files/17.md) ssh host
 - use [hostname](named_files/hostname.md) instead of ip address
+- [correcting](auto-setup/README.md) some issues w/ ``known_hosts`` using a [Python script](auto-setup/setup/kill_previous)
+
 
 #### Note
 
-- I've assumed you know something about the command line.  You can follow along by cut-and-paste, but I haven't explained the most basic commands like ``cd`` and ``ls`` and ``cp`` and so forth.
+- Some knowledge about the command line is assumed.  You can follow along by cut-and-paste, but I haven't explained the most basic commands like ``cd`` and ``ls`` and ``cp`` and so forth.
 
 Suggestions for learning more about Unix and Linux are below.
 
@@ -120,23 +122,38 @@ A download and install of Stretch + Desktop from a .img file:
 - [setting up](disk-stuff/headless1.md) headless Lite
 - [variation](disk-stuff/headless2.md), modify the disk image first
 
-#### Scripting setup
+#### raspi-config
 
 There are a number of configuration details that must be accomplished *after* first boot (or at least, I don't know how to do them before).
 
-- [scripts](setup/scripting.md) for auto Pubkey Auth setup
-- [correcting issues](files/17.md) with ``known_hosts`` on the Mac
+``raspi-config`` is the tool to set locale, keyboard, and more, on the Pi.  But it's a bit of a pain.
 
-Short version:  I wrote one script to write the OS image to a USB drive, and one to configgure the Pi as far as Pubkey Auth ssh.  [here]()
+I [spent](config/README.md) [notes] a lot of time trying to figure out how to do the equivalent actions from the command line, but failed.
 
-#### Locale
+#### Scripting setup
 
-In addition to the above:
+- [scripts](setup/README.md) for auto Pubkey Auth setup
+- [loading other software], see: ``setup/servers``.
 
-- [set locale](named_files/locale.md) from the command line
-- [correcting](setup-scripting/setup.md) some [issues](named_files/keyboard.md) with known hosts in a [Python script](setup-scripting/setup/kill_previous).
+Short version:  I wrote one script to write the OS image to a USB drive, and one to configgure the Pi as far as Pubkey Auth ssh [here](setup/README.md)
 
-To save the modified OS see **Saving backups**, below.
+My current approach has been to boot Lite with WiFi and then do the ``raspi-config`` stuff by hand and save the image as ``lite-config.img``.
+
+The modified OS was saved as described in **Saving backups**, below.
+
+Then I boot with that and do the scripting as documented above.
+
+#### ``known_hosts``
+
+- [Issues](files/17.md) with ``known_hosts`` on the Mac
+
+I wrote a Python script to remove previous keys associated with the Pi from ``~/.ssh/known_hosts`` on the Mac.  It's in ``~/bin``, which is on my path, and can be invoked by doing
+
+```
+kill_previous
+```
+
+A copy of the script file is [here](setup/setup/kill_previous).
 
 #### Saving backups
 
@@ -158,7 +175,7 @@ I need to know the right size.  ``df -h`` says we're using only 1.1 GB for /dev/
 
 #### Unix stuff
 
-- [my quick intro](unix-cmds/main.md) to selected Unix commands
+- [my quick intro](unix-cmds/README.md) to selected Unix commands
 - [link](https://en.wikibooks.org/wiki/Guide_to_Unix/Commands) to wiki guide to Unix commands
 - simple example of [C compilation](files/7.md)
 - [upgrading to Python 3.7](files/8.md) plus matplotlib
@@ -172,7 +189,7 @@ I need to know the right size.  ``df -h`` says we're using only 1.1 GB for /dev/
 
 Pi stands for Python, [here](named_files/python.md) are a few cool examples of mine and links to many other things I've written about Python.
 
-[Here](https://docs.python.org/3/tutorial/) is the official Python tutorial.  And [here](https://github.com/telliott99/PyBioinformatics) is a book that I wrote about using Python for Bioinformatics.
+The official [Python tutorial](https://docs.python.org/3/tutorial/) is excellent.  And [here](https://github.com/telliott99/PyBioinformatics) is a book that I wrote about using Python for Bioinformatics.
 
 <hr>
 

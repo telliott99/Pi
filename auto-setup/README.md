@@ -1,14 +1,15 @@
 TL;DR
 
 - Put a target USB drive into the Mac
-- run:  ``scripts/write`` to erase, format and copy
+- run:  ``write-lite-conf`` to erase, format and copy
 - Put the drive into the Pi
 - Power up
-- run:  ``scripts/do_all``
+- run:  ``setup/client-script`` to do Pubkey stuff
+
 
 At the moment, I still need to do ``sudo raspi-config`` and configure locale and keyboard by hand.  After that:
 
-- run: ``scripts/get-software``
+- run: ``servers/get-software``
 
 to install apache and nginx and configure them.
 

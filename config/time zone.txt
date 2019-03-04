@@ -1,0 +1,35 @@
+Struggling with raspi-config
+
+but this (for timezone)
+
+https://raspberrypi.stackexchange.com/questions/87164/setting-timezone-non-interactively
+
+approaches an answer:
+
+sudo raspi-config nonint do_hostname 
+for hostname 
+
+and see the answer for the time zone
+
+
+
+https://raspberrypi.stackexchange.com/questions/47180/editing-the-settings-that-are-available-through-raspi-config-without-using-raspi
+
+
+more!!
+https://raspberrypi.stackexchange.com/questions/28907/how-could-one-automate-the-raspbian-raspi-config-setup
+
+pi@raspberrypi:~$ locale=en_US.UTF-8
+pi@raspberrypi:~$ sudo raspi-config nonint do_change_locale $locale
+sudo: unable to resolve host raspberrypi
+Generating locales (this might take a while)...
+  en_US.UTF-8... done
+Generation complete.
+pi@raspberrypi:~$ 
+
+
+sudo unable to resolve host raspberrypi
+
+https://raspberrypi.stackexchange.com/questions/64548/pi3-unable-to-resolve-host-message
+
+

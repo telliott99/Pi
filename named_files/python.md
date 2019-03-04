@@ -3,8 +3,8 @@
 - a fun [Python version](../files/20.md) of the [password generator](pw_util.md)
 - [Caesar cipher](caesar.md)
 - [Beale cipher](Beale-cipher.md)
-- Sieve of Eratosthenes in [Python](../scripts/eratosthenes.py)
-- simple [integration script](../scripts/integrate.py) 
+- Sieve of Eratosthenes in [Python](../python-scripts/eratosthenes.py)
+- simple [integration script](../python-scripts/integrate.py) 
 - automating check of git status:  [gitcheck](gitcheck.md)
 - [Pycogent](pycogent.md) bioinformatics [in progress]
 
@@ -43,6 +43,6 @@ $
 
 #### Refs
 
-[Pycogent website](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjgv8T-rtTgAhXxV98KHVK8Ds0QFjAAegQIAhAB&url=http%3A%2F%2Fpycogent.org%2Findex.html&usg=AOvVaw1lvjTFQxu0Gh9h_AU3lnKV) is broken, unfortunately
+The [Pycogent website](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjgv8T-rtTgAhXxV98KHVK8Ds0QFjAAegQIAhAB&url=http%3A%2F%2Fpycogent.org%2Findex.html&usg=AOvVaw1lvjTFQxu0Gh9h_AU3lnKV) is broken, unfortunately
 
 I've written quite a lot about Python with projects on github (examples in [1](https://github.com/telliott99/PythonQuickies), [2](https://github.com/telliott99/Python2-Data), [3](https://github.com/telliott99/PyBioinformatics)).

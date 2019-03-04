@@ -27,8 +27,10 @@ else
   echo "Pubkey login is working, will disable PW login"
   sshpass -p "raspberry" \
   ssh -o StrictHostKeyChecking=no \
-  $pi 'sudo cp $HOME/tmp/pub.txt /etc/ssh/sshd_config;\
-  sudo service ssh restart'
+  $pi 'sudo cp $HOME/tmp/pub.txt /etc/ssh/sshd_config; \
+  sudo rm -r $HOME/tmp; \
+  sudo service ssh restart; '
+  
 fi
 
 rm -r setup/tmp/key

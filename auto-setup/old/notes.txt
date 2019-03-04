@@ -1,0 +1,3 @@
+this is version 2 of setup script
+renamed scripts to setup
+code isn't edited to reflect that yet

@@ -1,0 +1,5 @@
+The servers scripting is still in progress.
+
+apache2 does not currently run test
+
+nginx hasn't been done properly (see get-software)

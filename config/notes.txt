@@ -1,0 +1,27 @@
+
+
+# ------
+Keyboard layout is in 
+/etc/default/keyboard
+/etc/default/console-setup
+
+but recommended approach is to edit via
+
+dpkg-reconfigure keyboard-configuration
+dpkg-reconfigure console-setup
+
+manual pages for keyboard, console-setup
+
+
+
+From raspi-config source:
+
+keyboard:
+
+dpkg-reconfigure keyboard-configuration
+invoke-rc.d keyboard-setup start
+
+dpkg-reconfigure locales
+
+
+Write a script to find dead links in my markdown.
