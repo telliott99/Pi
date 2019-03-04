@@ -16,6 +16,7 @@ cut -f 3 -d " " $HOME/.ssh/authorized_keys
 #-----------
 
 sudo cp $HOME/tmp/both.txt /etc/ssh/sshd_config
+sudo cp $HOME/tmp/motd /etc/motd
 sudo service ssh restart
 
 

@@ -1,58 +1,37 @@
 #! /bin/bash
 
-pi="pi@raspberrypi.local"
-
-ssh $pi 'sudo apt-get update; \
-sudo apt-get -y install curl;\
-sudo apt-get -y install apache2; \
-sudo apt-get install -y libapache2-mod-python'
-
-scp servers/tmp/test $pi:/home/pi
-ssh $pi 'sudo chown $USER:$USER $HOME/test; \
-sudo chmod 755 $HOME/test; \
-sudo cp $HOME/test /usr/lib/cgi-bin'
-
-# /etc/apache2/conf-available/serve-cgi-bin.conf
-# has ScriptAlias already set up to /usr/lib/cgi-bin/
-
-echo 'running a2enmod cgi'
-ssh $pi 'sudo a2enmod cgi'
-
-echo 'test apache2:'
-ssh $pi 'curl localhost/cgi-bin/test'
-
-echo 'disabling apache2 server'
-ssh $pi 'sudo update-rc.d apache2 disable' 
+# servers/do_apache
 
 #-----------------------------------------
 
-# does not yet work
+pi="pi@raspberrypi.local"
 
 ssh $pi 'sudo apt-get install -y nginx; \
-sudo update-rc.d nginx disable;'
+sudo update-rc.d nginx disable; \
+sudo service apache2 stop; '
 
-exit
+ssh $pi 'sudo mkdir -p /var/www/test.com/html; \
+sudo chmod -R 755 /var/www;'
 
-todo:
+scp -r -q servers/tmp $pi:/home/pi
+ssh $pi 'sudo chown -R $USER:$USER $HOME/tmp' 
 
-$ sudo mkdir -p /var/www/test.com/html
-$ sudo chmod -R 755 /var/www
+ssh $pi 'sudo cp ~/tmp/index.html /var/www/test.com/html/ ;'
 
-> scp index.html pi@10.0.1.7:~
-$ sudo cp ~/index.html /var/www/test.com/html/
+d1=/etc/nginx/sites-available
+d2=/etc/nginx/sites-enabled
 
-> scp test.com.txt pi@10.0.1.7:~/test.com
-$ sudo cp ~/test.com /etc/nginx/sites-available/test.com
+ssh $pi 'sudo cp ~/tmp/test.com.txt $d1/test.com;\
+sudo cp ~/tmp/nginx.conf /etc/nginx/nginx.conf;
+sudo cp ~/tmp/hosts /etc/hosts;
+sudo service nginx stop'
 
-$ sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
-$ sudo rm /etc/nginx/sites-enabled/default
+ssh $pi 'echo "making symbolic link"; \
+sudo ln -s $d1/test.com $d2/ 2>/dev/null; \
+sudo rm $d2/default 2>/dev/null; \
+rm -r ~/tmp; '
 
-sudo nano /etc/nginx/nginx.conf
-# uncomment:
-server_names_hash_bucket_size 64;
+ssh $pi 'sudo service nginx restart;'
+ssh $pi 'echo "testing:"; curl -s test.com;'
 
-sudo nano /etc/hosts
-# add:
-127.0.0.1       test.com
 
-$ sudo service nginx restart

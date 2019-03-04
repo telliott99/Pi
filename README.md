@@ -29,7 +29,7 @@ The official Pi docs are [here](https://www.raspberrypi.org/documentation/).
 
 #### NOOBS
 
-If you haven't worked with Linux much, you should look at NOOBS.  It allows you to choose a version if the Raspbian Stretch OS and then it basically sets itself up.
+If you haven't worked with Linux much, you should look at NOOBS.  It allows you to choose a version of the Raspbian Stretch OS and then it basically sets itself up.
 
 The micro SD card I bought ([here](https://www.amazon.com/gp/product/B01H5ZNOYG/ref=ppx_yo_dt_b_asin_title_o02__o00_s00?ie=UTF8&psc=1)) came with NOOBS installed, and it was pre-expanded so that it came to the Desktop about 10 seconds after I turned it on.  That's a great place to start. 
 
@@ -37,7 +37,7 @@ The micro SD card I bought ([here](https://www.amazon.com/gp/product/B01H5ZNOYG/
 
 #### Note
 
-- I find it convenient to monitor the Pi by ssh (secure shell)  
+- I find it convenient to monitor the Pi by ssh (secure shell).
 
 I'm using a Mac as the client computer, from which I ssh *into* the Pi as a server.  Occasionally, I use a remote Desktop over the WiFi network.
 
@@ -60,7 +60,7 @@ are on the Mac.
 
 If you'd rather roll your own (or you accidentally wrote over your NOOBS like I did)
 
-- [reformat](files/22.md) a USB drive or SD card (w/ reader)
+- [reformat](files/22.md) a USB drive or SD card (w/ a reader)
 - download NOOBS, and copy files to the [drive](files/4.md)
 - [boot the Pi](named_files/boot-the-pi.md) (insert the card and power up)
 
@@ -84,7 +84,7 @@ If you have a dedicated monitor and want a Desktop, it's probably just as easy t
 
 #### Stretch + Desktop configuration
 
-Copying an image is covered below.  Here we have booted the Pi with an SD card or USB drive having Stretch Full.
+Copying an image is covered below.  Here we have booted the Pi from an SD card or USB drive with Stretch Full.
 
 - set up [WiFi](files/1.md) from the Desktop
 - start the [ssh](files/1a.md) server
