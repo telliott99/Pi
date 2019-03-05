@@ -180,7 +180,7 @@ This works, but it's flaky.  I recommend the sequence described above:
 
 - apache
 - nginx
-- flask
+- [flask](flask/README.md)
 
 See [here](servers/README.md)
 

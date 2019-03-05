@@ -33,4 +33,4 @@ pip3 install flask
 - [skeleton](2-skeleton/README.md)
 - [proper html](3-html/README.md)
 - [exposed on the LAN](4-ports/README.md)
-- [configuration](5-config.README)
+- [configuration](5-config/README.md)
