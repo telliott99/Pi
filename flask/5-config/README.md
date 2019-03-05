@@ -140,29 +140,3 @@ It works
 ```
 
 We are on port 8000, etc.
-
-<hr>
-
-#### configuration
-
-Above, we set up our web app to configure itself based on ``config.py``, which in turn depends on an environmental variable.
-
-For our purposes, this is just as easily handled from ``app.py``, and clutters up the app, so for the future,s I will modify ``app.py`` to 
-
-```
-from app import app
-app.run(debug=True,port=8000,host="0.0.0.0")
-```
-
-and change what's in ``config.py`` to give us a couple of secrets:
-
-```
-import os
-
-class Config(object):
-    k = os.environ.get('SECRET_KEY')
-    SECRET_KEY = k or 'very-very-seecreet'
-    SESSION_KEY = str(os.urandom(24))
-```
-
-Among other things, this setup allows us to pass in secrets from the environment, so they're not stored in the file that is in a repo online somewhere.
