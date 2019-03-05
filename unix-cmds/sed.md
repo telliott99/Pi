@@ -65,6 +65,13 @@ echo "in setup"
 
 cd tmp
 
+```
+
+``sed '/^#/ d'`` deletes lines starting with ``#``.
+
+``sed '/^$/ d`` deletes empty lines.
+
+```
 > sed '/^#/ d' setup | sed '/^$/ d' | head -n 4
 echo "in setup"
 cd tmp
@@ -72,6 +79,6 @@ mkdir ~/.ssh
 cp key ~/.ssh/authorized_keys
 ```
 
-We take the first four lines of the original:  1 comment and 1 empty line.  Remove the comment ``^#``.  First, remove the comment
+We take the first four lines of the original:  1 comment and 1 empty line.  Remove the comment ``^#``, then the empty lines.  Print the first four lines of the result.
 
-Then use ``^$``, which matches empty lines.  (``^$`` means the beginning ``^`` and the end ``$`` of the line are immediately next to one another).
+ (``^$`` means the beginning ``^`` and the end ``$`` of the line are immediately next to one another).

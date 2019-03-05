@@ -11,38 +11,39 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 - [alias](alias.md)
 - [arp](arp.md)
 - [awk](awk.md)
-- [bgrep](bgrep.md)
-- [control characters](ctl.md):  ``CTL-Z``,``CTL-C``,``CTL-D``
+- [control characters](ctl.md)
 - [cut](cut.md)
 - curl --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/curl.rst)
 - [cut](cut.md)
-- [dd](dd.md)
 - [diskutil](diskutil.md)
+- [dot syntax](dot.md)
 - [EOF](eof.md) trick
-- find --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst)
+- [fdisk]
+- [find](find.md) --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst) [todo]
+- [find + grep](find+grep.md) [todo]
 - [grep](grep.md) --- [more](https://github.com/telliott99/MyUnix/blob/master/unix/grep.rst)
 - head, tail
-- [hdiutil](hdiutil.md)
 - [hexdump](hexdump.md) --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/hexdump.rst)
 - ifconfig --- see below
-- kill
+- [kill](kill.md)
 - [ln](ln.md)
 - [man](man.md)
+- [netcat]
 - [nmap]
 - [parted](../linux/parted.md)
 - [ps]
-- [pipes & redirection](pipe.md):  ``|``, ``>``, ``<``, ``>>``
+- [pipes & redirection](pipe.md)
 - [ps](ps.md)
-- [pv](pv.md)
+- [scp]
 - [sed](sed.md)
-- [sort]
+- [sort](sort.md)
 - [stat] ``-f %z <filename>``:  file size (bytes)
 - [sudo](sudo.md)
 - [tar and zip] (tar-zip.md)
 - [touch](touch.md)
 - [tr](tr.md) --- translate
-- [truncate](truncate.md)
-- wc
+- [tree](tree.md)
+- [wc](wc.md)
 - whiptail
 - xargs --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/xargs.rst)
 

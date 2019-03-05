@@ -29,6 +29,20 @@ cab
 cab
 ```
 
+#### two patterns
+
+```
+> printf "foo\nbar\nbaz\n" > x.txt
+> grep 'foo\|bar' x.txt
+foo
+bar
+> grep -E 'foo|bar' x.txt
+foo
+bar
+```
+
+So ``-E`` or ``\|``.
+
 #### inverted
 
 - ``-v`` invert match, non-matching lines only
@@ -42,7 +56,7 @@ cab
 #### more flags
 
 - ``-n`` --- line number of the match
-- ``-r`` --- every file in a directory
+- ``-r`` (recursive) descend into a directory
 
 Example:
 
@@ -67,10 +81,6 @@ So
 > grep -ci "A" x.txt
 3
 ```
-
-#### find + grep
-
-[to do]
 
 #### context
 

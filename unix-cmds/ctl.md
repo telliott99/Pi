@@ -8,7 +8,9 @@
 
 #### ``^D``
 
-``CTRL-D`` of ``^D``, also known as ``\04`` or 0x4, called END_OF_TRANSMISSION in Unicode, is the default eof control character for the shell.  Thus:
+``CTRL-D``, or ``^D``, also known as ``\04`` or 0x4, is called END_OF_TRANSMISSION in Unicode.
+
+It is the default EOF control character for the shell.  Thus:
 
 ```
 > spi
@@ -31,9 +33,9 @@ Connection to raspberrypi.local closed.
 - ``CTRL+C`` or ``^C`` sends a process SIGINT
 - ``CTRL+Z`` or ``^Z`` sends a process SIGSTP
 
-SIGSTOP allows cleanup.  
+**SIGSTOP** allows the program to cleanup after itself. 
 
-SIGINT cannot be intercepted by the program.
+**SIGINT** cannot be intercepted by the program.
 
 ```
 > cat
@@ -44,7 +46,7 @@ SIGINT cannot be intercepted by the program.
 >
 ```
 
-``^Z`` is more severe.
+``^Z`` is more severe than ``^C``
 
 #### kill
 

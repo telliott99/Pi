@@ -178,7 +178,11 @@ This works, but it's flaky.  I recommend the sequence described above:
 
 #### Web servers and frameworks
 
-- [apache, nginx, flask](servers/README.md)
+- apache
+- nginx
+- flask
+
+See [here](servers/README.md)
 
 <hr>
 
