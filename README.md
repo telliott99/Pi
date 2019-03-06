@@ -178,11 +178,15 @@ This works, but it's flaky.  I recommend the sequence described above:
 
 #### Web servers and frameworks
 
+See [here](servers/README.md) for how to set up two servers:
+
 - apache
 - nginx
+
+A Python web framework called [Flask](http://flask.pocoo.org) is introduced in some detail:
+
 - [flask](flask/README.md)
 
-See [here](servers/README.md)
 
 <hr>
 

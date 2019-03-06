@@ -13,7 +13,3 @@
 - [tutorial](nginx.md) from Digital Ocean 
 - [Following](nginx-php.md) a Pi [tutorial](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md) for PHP + nginx
 - nginx + python
-
-#### flask
-
-- [flask] (to-do)

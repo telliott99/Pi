@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post" action="/dispatch">
+<h2>Choose a program:</h2>
+
+{% for script in script_list %}
+{% if script == default %}
+<p><input type="radio" name="prog" value="{{script}}" checked>  {{script}}</p>
+{% else %}
+<p><input type="radio" name="prog" value="{{script}}">  {{script}}</p>
+{% endif %}
+{% endfor %}
+
+<p><input type="submit" value="Submit"></p> 
+</form>
+
+{% endblock %}
