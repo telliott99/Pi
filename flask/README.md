@@ -27,15 +27,31 @@ and then
 pip3 install flask
 ```
 
-#### basic examples
+#### basic setup and config
 
-- app in a [single pyfile](1-single-pyfile/README.md)
-- skeleton [app](2-skeleton/README.md)
-- [proper html](3-html/README.md)
-- [exposed](4-ports/README.md) on local network
-- [configuration](5-config/README.md)
-- [cookie](6-cookie/README.md) example
-- [template](7-templates/README.md) example
-- [form](8-forms/README.md) example
+- app in a [single file](one-file/README.md)
+- [dynamic url](dynamic-url/README.md)
+- standard app [skeleton](skeleton/README.md)
+- using [proper html](html/README.md)
+- simple [configuration](config-revised/README.md)
+- [configuration](config/README.md)
+- Pi [runs Flask](ports/README.md) on LAN
+
+<hr>
+
+#### forms
+
+- [templates](templates/README.md)
+- simple [button](button.md)
+- [form](forms/README.md) example
+- [CSRF token](csrf/README.md)
+
+#### cookies, sessions and logins
+
+- [cookie](cookie/README.md) example
+- [session](session/README.md) cookie
+- [login](login/README.md)
+
 
 At this point, things have gotten pretty sophisticated.
+

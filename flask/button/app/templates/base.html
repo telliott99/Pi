@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Template demo</title>
+    <link rel="stylesheet" type="text/css" 
+    href={{ url_for("static", filename="style.css") }}
+  </head>
+  <body>
+    <h2>Templates: &nbsp;
+        <a href="{{ url_for('index') }}">Home</a>
+    </h2>
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+  </body>
+</html>

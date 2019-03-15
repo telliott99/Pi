@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Demo</title>
+    <link rel="stylesheet" type="text/css" 
+    href={{ url_for("static", filename="style.css") }}
+  </head>
+
+  <body>
+      <form action="" method="post">
+        {{ form.csrf_token }}
+
+          <div class="input text">
+              {{ form.name.label }} {{ form.name }}
+          </div>
+
+          <div class="input submit">
+              <input type="submit" value="Submit" />
+          </div>
+      </form>
+  </body>
+</hmtl>
