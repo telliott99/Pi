@@ -68,6 +68,3 @@ Some of the more commonly used signals:
 ```
 
 ``^C is -2, ^Z is -9``.
-
-
-

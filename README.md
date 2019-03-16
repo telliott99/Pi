@@ -206,7 +206,11 @@ A Python web framework called [Flask](http://flask.pocoo.org) is introduced in s
 
 [Here](named_files/python.md) are a few cool examples of mine and links to many other things I've written about Python.
 
-The official [Python tutorial](https://docs.python.org/3/tutorial/) is excellent.  And [here](https://github.com/telliott99/PyBioinformatics) is a book that I wrote about using Python for Bioinformatics.
+I wrote one additional script [find.py](python-scripts/find.py) (and a helper [utils.py](python-scripts/utils.py)) to check for broken links in this repo.
+
+I tend not to follow the common advice to name all variables with descriptive names.  All my indexes are ``i,j`` etc., lists are ``L``, dictionaries are ``D``,  unless there's more than one.  I find the additional verbiage to be more a distraction than a help.
+
+The official [Python tutorial](https://docs.python.org/3/tutorial/) is excellent.  And [here](https://github.com/telliott99/PyBioinformatics) is the source for a book that I wrote about using Python for Bioinformatics.  The pages render fine as restructured text, but to get the real deal you need to use [Sphinx](http://www.sphinx-doc.org/en/master/).
 
 <hr>
 
@@ -223,11 +227,6 @@ The official [Python tutorial](https://docs.python.org/3/tutorial/) is excellent
 - [generating](named_files/pw_util.md) passwords from the command line
 
 <hr>
-
-#### Text, typesetting and more
-
-- LaTeX --- not done yet
-- Sphinx --- not done yet
 
 #### Current stuff
 

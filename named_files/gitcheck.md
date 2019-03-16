@@ -73,4 +73,4 @@ Here is the output for one run:
 > 
 ```
 
-[**gitcheck.py**](../scripts/gitcheck.py)
+[**gitcheck.py**](../python-scripts/gitcheck.py)

@@ -2,7 +2,7 @@
 
 This is the front page we will build with templates:
 
-![](../figs/7-templates.png)
+![](../figs/templates.png)
 
 
 Templates are part of the Jinja2 system [docs](http://jinja.pocoo.org/docs/2.10/).  It's pretty sophisticated.

@@ -27,7 +27,7 @@ We want to setup the Pi for ssh using a script run on the Mac.  The Pi has been 
 
 Erasing the disk and writing the .img file is performed by this script:
 
-[``write``](scripts/write)
+[``write``](write-lite)
 
 #### First version
 

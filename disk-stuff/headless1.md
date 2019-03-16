@@ -22,7 +22,7 @@ I think it's a pain.
 
 On the Mac I have this file
 
-[**wpa_supplicant.conf**](../named_files/wpa_supplicant.conf)
+[**wpa_supplicant.conf**](wpa_supplicant.conf)
 
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev

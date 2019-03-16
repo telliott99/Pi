@@ -39,9 +39,17 @@ bar
 > grep -E 'foo|bar' x.txt
 foo
 bar
+> grep -e foo -e bar x.txt
+foo
+bar
+> egrep "foo|bar" x.txt
+foo
+bar
+> 
+
 ```
 
-So ``-E`` or ``\|``.
+So ``-E`` or ``\|`` or egrep or two ``-e`` flags.
 
 #### inverted
 
