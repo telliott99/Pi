@@ -9,7 +9,6 @@ img1 = re.compile(r'!\[\]\(.+\)')
 img2 = re.compile('<img.+\/>')
 
 # link containing standard file path:
-
 link = re.compile(r'\[.+\](.+)')
 path = re.compile(r'(.+)')
 
@@ -27,6 +26,7 @@ def g(s):
     # find file path in:
     # <img src="../super/fn.png" ... />
     i = s.find('"')
+    assert i != -1
     j = s.find('"',i+1)
     ret = s[i+1:j]
     if v:  print(ret + '\n')

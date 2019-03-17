@@ -1,3 +1,5 @@
+#### Testing for dead links
+
 There's a lot of rearranging that goes into a project like this one.  When you do that, it is very hard to remember which files link to the one you are moving to a new location.
 
 I wrote two Python scripts 
@@ -5,19 +7,34 @@ I wrote two Python scripts
 - [find.py](../python-scripts/find.py)
 - and a helper [utils.py](../python-scripts/utils.py)
 
-to check for broken links in a repo.
+to check for broken links in a repo.  Here's some output:
+
+```
+> python find.py $ghd/Pi -v
+..
+----------
+fn:   /servers/apache.md
+link: ../figs/apache2.png
+path: figs/apache2.png
+OK:  file exists
+----------
+137 files searched: 137 OK
+>
+```
+
+``$ghd/Pi`` is an alias for the project directory, and ``-v`` is a flag for verbose output.
 
 Here are some of the highlights.
 
 #### directory listing
+
+We could use Python to go through directories and sub-directories, but this is easier.  Just launch a Unix process and run ``find`` on the directory that we're passed on the command line.
 
 ```
 import subprocess
 ..
 out = subprocess.check_output(['find', d])
 ```
-
-We could use Python to go through directories and sub-directories, but this is easier.  Just launch a Unix process and run ``find`` on the directory that we're passed on the command line.
 
 #### Patterns
 
@@ -28,13 +45,11 @@ We are searching for links to files and images, which have distinctive patterns 
 - ``'[app.py](app.py)'``
 - ``'[name](../path/to/file.md)'``
 
-Regular expressions are used to find these.  
-
-I find this subject challenging, so I'll keep it basic.
+Regular expressions can be used to find these.  I find this subject challenging, so I'll keep it simple.
 
 #### Python regular expressions
 
-Suppose we want a line beginning with ``'a'``.  That is signified by ``'^a'``:
+Suppose we want to recognize lines beginning with ``'a'``.  That is signified by ``'^a'``:
 
 ```
 >>> import re
@@ -53,7 +68,7 @@ Notice the lack of a match for the second target.
 
 In the case of ``'[app.py](app.py)'``, we're looking for the pattern ``'[name](link)'``.
 
-In searching for ``[``, we must escape the character, because it has a special meaning for regexes, namely, ``[abc]`` searches for *any* of ``abc`` or, for that matter, any of ``[a-z]``.
+In searching for ``[``, we must escape the character, because it has a special meaning for regexes, namely, ``[abc]`` searches for *any* of ``abc`` or, for that matter, any of a range like ``[a-z]``.
 
 Something like this:
 
@@ -98,7 +113,9 @@ However, this does:
 >>>
 ```
 
-As I say, I'm not that swift with this.  In some cases things didn't work, and I couldn't figure it out quickly enough, so I fall back on old methods like:
+The ``?`` means to match *zero* or more of the preceeding character.
+
+As I say, I'm not that swift with this.  In some cases things didn't work, and I couldn't figure it out quickly enough, so I fall back on old standards like:
 
 ```
 >>> s = '<img src="../super/fn.png" ... />'
@@ -110,9 +127,44 @@ As I say, I'm not that swift with this.  In some cases things didn't work, and I
 >>>
 ```
 
+Python ``str.find`` takes an optional argument telling at what position to start the search.  If no match is found, the result is ``-1``.  It's good to check for this and respond accordingly.
+
+I found a syntax coloring bug in Smultron:
+
+![](../figs/color_error.png)
+
+Smultron thinks ``'"'`` is a triple-quote, so it colors the characters until the second occurence as a string.  Python knows better.
+
+#### Troubleshooting
+
+I found three problems when examining the output for errors.  Sometimes we'd get paths with double slashes ``//``, this was just a logic error.
+
+There were two kinds of weird patterns that matched the regex I used.  Some were in quoted blocks (bounded by three ` marks).  These were passed over with this logic:
+
+    active = True
+    for fn in L:
+       ..
+        with open(d+fn,'r') as fh:
+             ..
+             for line in sL:
+            
+                # don't read quoted blocks
+                if line.strip() == '```':
+                    active = not(active)
+                if not active:
+                    continue
+
+The other one I just filtered out manually with
+
+```
+    if link == "via systemctl":
+        return
+
+```
+
 #### Reporting results
 
-At the end of the script I want to say something like:  "we searched ``n`` files and ``g`` of them were OK".
+At the end of the script I want to show statistics, something like:  "we searched ``n`` files and ``g`` of them were OK".
 
 ```
 OK_files = dict()

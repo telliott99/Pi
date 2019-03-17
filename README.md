@@ -83,7 +83,7 @@ In many ways the easy install is the whole point.  Experimentation is cheap.  If
 - All previous versions of Stretch are [here](http://downloads.raspberrypi.org/raspbian/images/)
 - Stretch-Lite is [here](http://downloads.raspberrypi.org/raspbian_lite/images/)
 
-If you have a dedicated monitor and want a Desktop, it's probably just as easy to use the GUI tools to do the setup.  If you don't have a Desktop (you're using Lite), or you find yourself installing repeatedly, there ways to automate much of the process, see below.  
+If you have a dedicated monitor and want a Desktop, it's probably just as easy to use the GUI tools to do the setup.  If you don't have a Desktop (you're using Lite), or you find yourself installing repeatedly, there are ways to automate much of the process, see below.  
 
 #### Stretch + Desktop configuration
 
@@ -152,7 +152,7 @@ I wrote a Python script to remove previous keys associated with the Pi from ``~/
 kill_previous
 ```
 
-A copy of the script file is [here](setup/setup/kill_previous).
+A copy of the script file is [here](auto-setup/setup/kill_previous).
 
 #### Saving backups
 
@@ -161,7 +161,7 @@ A copy of the script file is [here](setup/setup/kill_previous).
 
 Several days work on disk images and backups, copying, etc. are chronicled [here](disk-stuff/README.md).  
 
-One can save a modified system as a disk image, and re-install it on a USB drive or SD card and have it work.m
+One can save a modified system as a disk image, and re-install it on a USB drive or SD card and have it work.
 At this point, I copied over a Lite image with WiFi and SSH on, turned on PubKey Auth, went through the ``raspi-config`` dance, installed apache2 and nginx and tested them.  I want to save it back to the Mac as a .img file.
 
 I need to know the right size.  ``df -h`` says we're using only 1.1 GB for /dev/root.  1.5 GB works fine.

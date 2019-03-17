@@ -2,7 +2,7 @@ import sys, subprocess, re, os
 import utils as ut
 
 '''
-take a directory on the command line
+input a directory on the command line
 find all .md files
 search for links within those .md files
 check if the linked file exists
@@ -41,39 +41,37 @@ def pp(fn,link,path):
     print('fn:   ' + fn) 
     print('link: ' + link)
     print('path: ' + path)
-    print("")
 
 # check if file exists for a given link
     
 def check(fn,link,D):
+    # don't check external links
     if 'http' in link:
         return
         
-    # some files have expressions
-    # that don't parse with our regexpr
-    # temp fix:
-    for term in ['via', 'clang', 'x + 26']:
-	    if term in link:
-	        return
-            
-    pL = fn[1:].split('/')
-    if link.startswith('..'):
-        parent = '/' + '/'.join(pL[:-2])
-        link = link[2:]
-    else:
-        parent = '/' + '/'.join(pL[:-1])
-        link = '/' + link
+    # weird pattern that matches our regex
+    # [ ok ] Starting nginx (via systemctl)
+    if link == "via systemctl":
+        return
+    	
+	# file names result from removing the directory d
+	# so they always start with '/' 
+    assert fn[0] == '/'
+    fnL = fn[1:].split('/')
     
-    path = d + parent + link
-    short = path.replace(d, "")
+    # remove the file name containing the link
+    fnL.pop()
     
-    # there's an error in the logic
-    # rarely, we get '//' in path
-    # just fix it
-  
-    if '//' in path:
-        path = path.replace('//','/')
-        short = path.replace(d, "")
+    # links either start with '../' or '../..'
+    # or they're relative to the current directory
+    linkL = link.split('/')
+    
+    while linkL[0] == '..':
+        linkL.pop(0)
+        fnL.pop()
+    
+    short = '/'.join(fnL + linkL)
+    path = d + '/' + short
     
     if not os.path.exists(path):
         pp(fn,link,short)
@@ -84,25 +82,32 @@ def check(fn,link,D):
     else:
         if v:
             pp(fn,link,short)
-            print("OK:  file exists\n")
+            print("OK:  file exists")
             
-        if v:  print('-'*10)
+    if v:  print('-'*10)
 
 #-----------------------------------
 # do the search
 
 def run(D):
-	for fn in L:
-	    D[fn] = True
-	
-	    with open(d+fn,'r') as fh:
-	        data = fh.read()
-	        sL = data.strip().split('\n')
-	        for line in sL:
-	            link = ut.extract_link(line)
-	            if link:
-	                check(fn, link, D)
-	
+    active = True
+    for fn in L:
+        D[fn] = True
+
+        with open(d+fn,'r') as fh:
+            data = fh.read()
+            sL = data.strip().split('\n')
+            for line in sL:
+            
+                # don't read quoted blocks
+                if line.strip() == '```':
+                    active = not(active)
+                if not active:
+                    continue
+            
+                link = ut.extract_link(line)
+                if link:
+                    check(fn, link, D)
 
 OK_files = dict()
 run(OK_files)

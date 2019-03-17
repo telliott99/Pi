@@ -6,10 +6,6 @@ There is a Raspberry Pi tutorial on Flask [here](https://projects.raspberrypi.or
 
 I worked with Flask a year ago (and another time before that), but it's scattered across several Github projects and not well organized.
 
-#### The plan
-
-The plan this time is to have projects numbered sequentially, and at least at first, to use the previous project as the basis for the next one.  So it's quite literally one step at a time.  
-
 #### Preliminary
 
 Flask is a web "framework" which is installed together with a web server like [gunicorn](https://gunicorn.org).
