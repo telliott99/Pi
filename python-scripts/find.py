@@ -93,7 +93,7 @@ def check(fn,link,D):
 
 def run(D):
 	for fn in L:
-	    OK_files[fn] = True
+	    D[fn] = True
 	
 	    with open(d+fn,'r') as fh:
 	        data = fh.read()
@@ -101,7 +101,7 @@ def run(D):
 	        for line in sL:
 	            link = ut.extract_link(line)
 	            if link:
-	                check(fn, link, OK_files)
+	                check(fn, link, D)
 	
 
 OK_files = dict()
