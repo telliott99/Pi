@@ -1,4 +1,4 @@
-# python3 gitcheck.py /Users/telliott_admin/Github
+# python3 gitcheck.py $ghd
 
 import os, sys, subprocess
 from subprocess import run

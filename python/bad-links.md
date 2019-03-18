@@ -82,7 +82,7 @@ Something like this:
 
 The ``.+`` is a dot ``.``, which matches any character except a newline, and ``+`` means one or more of the preceeding character.
 
-Now, the ``'('`` character is not *special*, so it must not be escaped:
+For some reason, the ``'('`` character is *special*, but it need not be escaped for this to work:
 
 ```
 >>> p = re.compile(r'\[.+\](.+)')
@@ -101,7 +101,7 @@ This does not match
 >>> 
 ```
 
-However, this does:
+However, I can fix that by doing:
 
 ```
 >>> p = re.compile(r'\[.?\](.+)')
@@ -115,21 +115,22 @@ However, this does:
 
 The ``?`` means to match *zero* or more of the preceeding character.
 
-As I say, I'm not that swift with this.  In some cases things didn't work, and I couldn't figure it out quickly enough, so I fall back on old standards like:
+Now, theoretically, we could modify what's between the (inner) parentheses ``(.+)`` to exclude whitespace, which would solve one of the problems I ran into.  However, that doesn't work and I'm not sure why.
+
+As I say, I'm not that swift with this.  I fall back on old standards like:
 
 ```
 >>> s = '<img src="../super/fn.png" ... />'
 >>> i = s.find('"')
 >>> j = s.find('"',i+1)
->>> ret = s[i+1:j]
->>> ret
+>>> s[i+1:j]
 '../super/fn.png'
 >>>
 ```
 
-Python ``str.find`` takes an optional argument telling at what position to start the search.  If no match is found, the result is ``-1``.  It's good to check for this and respond accordingly.
+Python ``str.find`` takes an optional index telling at what position to start the search.  If no match is found, the result is ``-1``.  It's good to check for failure and respond accordingly.
 
-I found a syntax coloring bug in Smultron:
+Along the way, I found a syntax coloring bug in Smultron:
 
 ![](../figs/color_error.png)
 

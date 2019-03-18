@@ -14,6 +14,8 @@ This sets up z.bin with 1024 random bytes followed by 1024 null bytes.
 ```
 
 Look with ``hexdump``:
+
+```
 > hexdump z.bin
 0000000 80 42 de a2 d9 f9 fc 20 80 42 68 8b 93 21 84 d3
 0000010 20 67 ba b7 4f 25 cb 0b e8 0f a7 ea f3 7b 00 8d
@@ -23,6 +25,7 @@ Look with ``hexdump``:
 *
 0000800
 > 
+```
 
 The output from ``reader`` looks like this:
 

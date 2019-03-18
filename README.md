@@ -204,11 +204,13 @@ A Python web framework called [Flask](http://flask.pocoo.org) is introduced in s
 
 #### Python
 
-[Here](named_files/python.md) are a few cool examples of mine and links to many other things I've written about Python.
+[Here](python/README.md) are a few examples that I like and links to other things I've written about Python.
 
-Here I develop a [program](named_files/bad-links.md) to check for broken links in this repo.
+I developed a [program](python/bad-links.md) to check for broken links in this repo.
 
-The official [Python tutorial](https://docs.python.org/3/tutorial/) is excellent.  And [here](https://github.com/telliott99/PyBioinformatics) is the source for a book that I wrote about using Python for Bioinformatics.  The pages render fine as restructured text, but to get the real deal you need to use [Sphinx](http://www.sphinx-doc.org/en/master/).
+The official [Python tutorial](https://docs.python.org/3/tutorial/) is excellent.  And [here](https://github.com/telliott99/PyBioinformatics) is the source for a book that I wrote about using Python for Bioinformatics.  
+
+The pages render fine as restructured text, but to get the real deal you need to use [Sphinx](http://www.sphinx-doc.org/en/master/).
 
 <hr>
 

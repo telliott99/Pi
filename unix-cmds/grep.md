@@ -29,28 +29,6 @@ cab
 cab
 ```
 
-#### two patterns
-
-```
-> printf "foo\nbar\nbaz\n" > x.txt
-> grep 'foo\|bar' x.txt
-foo
-bar
-> grep -E 'foo|bar' x.txt
-foo
-bar
-> grep -e foo -e bar x.txt
-foo
-bar
-> egrep "foo|bar" x.txt
-foo
-bar
-> 
-
-```
-
-So ``-E`` or ``\|`` or egrep or two ``-e`` flags.
-
 #### inverted
 
 - ``-v`` invert match, non-matching lines only

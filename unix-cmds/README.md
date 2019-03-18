@@ -3,51 +3,56 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 ```
 >
 ```
+#### Basics (you know these)
+
+- cd
+- cp
+- ``.`` and ``..``[syntax](dot-syntax.md)
+- ls
+- [ln](ln.md)
+- [man](man.md)
+- mkdir
+- mv
+- pwd
+- [touch](touch.md)
+- [wc](wc.md)
+- whomami
+
+#### Top of the useful list
+
+- [find](find.md) --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst) [more todo]
+- [find + grep](find+grep.md) [todo]
+- [grep](grep.md) --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/grep.rst)
+- [grep OR](grep-or.md) (x | y)
+- [pipes & redirection](pipe.md)
+- [sudo](sudo.md)
+- [xargs](xargs.md) --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/xargs.rst)
+
 
 #### Standard Unix commands
 
-[MyUnix](https://github.com/telliott99/MyUnix)
-
 - [alias](alias.md)
-- [arp](arp.md)
 - [awk](awk.md)
 - [control characters](ctl.md)
+- curl --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/curl.rst)
 - [cut](cut.md)
-- curl --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/curl.rst)
-- [cut](cut.md)
-- [diskutil](diskutil.md)
-- [dot syntax](dot.md)
+- [diff] --- todo
 - [EOF](eof.md) trick
-- [fdisk]
-- [find](find.md) --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst) [todo]
-- [find + grep](find+grep.md) [todo]
-- [grep](grep.md) --- [more](https://github.com/telliott99/MyUnix/blob/master/unix/grep.rst)
 - head, tail
-- [hexdump](hexdump.md) --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/hexdump.rst)
-- ifconfig --- see below
+- [hexdump](hexdump.md) --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/hexdump.rst)
 - [kill](kill.md)
-- [ln](ln.md)
-- [man](man.md)
-- [netcat]
-- [nmap]
-- [parted](../linux/parted.md)
-- [ps]
-- [pipes & redirection](pipe.md)
-- [ps](ps.md)
+- [ps](ps.md) --- process
 - [scp]
 - [sed](sed.md)
 - [sort](sort.md)
-- [stat] ``-f %z <filename>``:  file size (bytes)
-- [sudo](sudo.md)
 - [tar and zip] (tar-zip.md)
-- [touch](touch.md)
 - [tr](tr.md) --- translate
 - [tree](tree.md)
-- [wc](wc.md)
 - whiptail
-- xargs --- see [here](https://github.com/telliott99/MyUnix/blob/master/unix/xargs.rst)
 
-#### Selected additional Unix commands
+[MyUnix](https://github.com/telliott99/MyUnix)
+
+#### Selected additional commands
 
 - [bgrep](bgrep.md) --- binary grep
 - [pv](pv.md) --- progress viewer
@@ -57,13 +62,23 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 
 - [mount](mount.md) and unmount
 - [dd](dd.md)
+- [fdisk]
+- [parted](../linux/parted.md)
 - [Resource busy error](resource-busy.md)
+- [stat] ``-f %z <filename>``:  file size (bytes)
 - [getting info](show-info.md) ``df``, ``lsblk``, ``fdisk``, etc.
 
 #### Mac disk manipulation
 
 - [diskutil](diskutil.md)
 - [hdiutil](hdiutil.md)
+
+#### Network
+
+- [arp](arp.md)
+- ifconfig --- see below
+- [netcat]
+- [nmap]
 
 Possible fix for a drive that [won't show up](borked-drive.md)
 
