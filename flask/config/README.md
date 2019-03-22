@@ -6,7 +6,7 @@ For example, for a deployment on Heroku we might want a different host and port 
 
 One way to control that is to put code somewhere (say in ``app.py``) like this:
 
-```
+```python
 import os
 from app import app
 
@@ -44,7 +44,7 @@ The more usual approach is to keep ``app.py`` uncluttered and use a separate fil
 
 Add this to ``__init__.py``:
 
-```
+```python
 from config import Config
 app.config.from_object(Config)
 ```
@@ -53,7 +53,7 @@ So, even though ``config.py`` is at the same level as the ``app`` folder, inside
 
 In ``config.py``:
 
-```
+```python
 import os
 
 class Config(object):
@@ -67,14 +67,14 @@ class Config(object):
 
 ``__init__.py``
 
-```
+```python
 from config import Config
 app.config.from_object(Config)
 ```
 
 ``app.py``:
 
-```
+```python
 app.run(debug=True, 
     port=app.config['PORT'],
     host=app.config['HOST']
@@ -83,13 +83,13 @@ app.run(debug=True,
 
 So the Config object has Config.PORT, and when we do 
 
-```
+```python
 app.config.from_object(Config)
 ```
 
 we're basically updating a dictionary, which is accessed in ``app.py`` by
 
-```
+```python
 port=app.config['PORT']
 ```
 
@@ -97,7 +97,7 @@ For more details, see [here](http://flask.pocoo.org/docs/1.0/config/#configurati
 
 The slick part of this is that although ``app.config`` is basically a dict, it is smarter than that.  Above we did
 
-```
+```python
 PORT = k or 5000
 ```
 
@@ -105,14 +105,14 @@ where ``k`` is a string and 5000 is an int.  So you would think that ``PORT`` is
 
 Both of these calls do the same thing:
 
-```
+```python
 app.config['TESTING'] = True
 app.testing = True
 ```
 
 We can update by ``config.update``.
 
-```
+```python
 app.config.update(
     TESTING=True,
     SECRET_KEY=b'_5#y2L"F4Q8z\n\xec]/'

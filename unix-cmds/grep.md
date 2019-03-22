@@ -12,6 +12,30 @@ e.g.
 
 ``history | grep "erase"``
 
+#### flags
+
+- ``-c`` just count matching lines
+- ``-i`` ignore case
+- ``-l`` only print file name with match
+- ``-n`` print line numbers too
+- ``-r`` recursive (descend into directory)
+- ``-s`` silent, don't print errors
+- ``-v`` invert
+
+#### OR searches
+
+- ``-e`` flag each term for OR
+- ``-E`` pattern like ``a|b`` OR
+- ``-f fn`` read patterns from fn
+
+#### context
+
+- ``-A num`` num lines before
+- ``-B num`` num lines after
+- ``-C num`` num lines before and after
+
+#### beginning/end of a line
+
 Simple regular expression chars:  ``^`` and ``$``
 
 ```
@@ -28,6 +52,8 @@ cab
 > grep "b$" x.txt
 cab
 ```
+
+``^$`` matches an *empty* line.
 
 #### inverted
 

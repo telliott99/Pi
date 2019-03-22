@@ -14,6 +14,20 @@ and then double-click the icon to edit with macdown. Or use my ``te`` alias
 te x.md
 ```
 
+#### Change modification or access times
+
+```
+> touch -mt 201903120000 x
+> ls -al x
+-rw-r--r--  1 telliott_admin  staff  0 Jan 12  2008 x
+> find . -newer x
+..
+./doughnut_and_coffee_cup.gif
+..
+```
+
+#### Notes
+
 The default is to follow a symbolic link.
 
 ```

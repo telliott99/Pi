@@ -8,7 +8,7 @@ A form with a basic button looks like this (actually, a pair of buttons):
 
 and it's coded in html:
 
-```
+```html
 ..
 <form method="post" action="/dispatch">
 <h2>Button demo</h2>
@@ -38,7 +38,7 @@ It makes little sense (at least to me) to use different names for the two button
 
 We do
 
-```
+```python
     print(request.data)
     print(len(list(request.form.keys())))
     value = request.form["button"]

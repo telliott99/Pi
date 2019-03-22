@@ -18,10 +18,9 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 - [wc](wc.md)
 - whomami
 
-#### Top of the useful list
+#### Most useful
 
 - [find](find.md) --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/find.rst) [more todo]
-- [find + grep](find+grep.md) [todo]
 - [grep](grep.md) --- and see [here](https://github.com/telliott99/MyUnix/blob/master/unix/grep.rst)
 - [grep OR](grep-or.md) (x | y)
 - [pipes & redirection](pipe.md)

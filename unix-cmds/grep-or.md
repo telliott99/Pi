@@ -45,3 +45,18 @@ We combine ``-Ev`` to exclude both patterns:
 >
 ```
 
+#### read patterns from file
+
+```
+> cat p.txt
+b
+^g
+> cat x.txt
+abc
+def
+ghi
+>
+> grep -f p.txt x.txt
+abc
+ghi
+```
