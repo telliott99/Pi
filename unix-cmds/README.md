@@ -60,9 +60,10 @@ Preliminary note:  it's unconventional, but I am not showing the prompt that is 
 #### disk manipulation
 
 - [mount](mount.md) and unmount
-- [dd](dd.md)
+- [dd](dd.md) copy stdin to stdout
+- [du](du.md) disk usage
 - [fdisk]
-- [parted](../linux/parted.md)
+- [parted](../linux/parted.md) partition editor
 - [Resource busy error](resource-busy.md)
 - [stat] ``-f %z <filename>``:  file size (bytes)
 - [getting info](show-info.md) ``df``, ``lsblk``, ``fdisk``, etc.

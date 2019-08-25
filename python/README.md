@@ -12,9 +12,9 @@ more
 - automating check of git status:  [gitcheck](gitcheck.md)
 - [Pycogent](pycogent.md) bioinformatics [in progress]
 
-I tend not to follow the common advice to name all variables with descriptive names.  
+I tend not to worry about the common advice to name all variables with descriptive names.  
 
-All my indexes are ``i,j`` etc., lists are ``L``, dictionaries are ``D``,  unless there's more than one.  I find the additional verbiage to be more a distraction than a help.
+Instead, all my indexes are ``i,j`` etc., lists are ``L``, dictionaries are ``D``,  unless there's more than one.  I find the additional verbiage to be more a distraction than a help.
 
 #### Sieve of Eratosthenes
 

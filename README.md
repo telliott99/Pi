@@ -244,4 +244,3 @@ The pages render fine as restructured text, but to get the real deal you need to
 I am keeping an eye on [Atomic Pi](https://www.kickstarter.com/projects/323002773/atomic-pi-a-high-power-alternative-to-rpi/updates) --- more [here](http://www.digital-loggers.com/api.html).  Order [here](https://dlidirect.com/products/atomic-pi).
 
 Since these pages haven't been read much by others, there is a higher probability of errors or bugs than usual.  If you find one please let me know.
-
